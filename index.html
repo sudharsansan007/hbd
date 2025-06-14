@@ -1,435 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBD Saranya</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HBD Saranya</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
+      background-position: center center;
+      overflow: auto;
+      touch-action: manipulation;
+      margin: 0;
+    }
 
-        body {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    .paper {
+      background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
+      background-size: cover;
+      background-position: center center;
+      padding: 20px 100px;
+      transform: rotateZ(-5deg);
+      box-shadow: 1px 15px 20px rgba(0, 0, 0, 0.5);
+      position: absolute;
+      max-width: 90vw;
+      box-sizing: border-box;
+    }
 
-            background-size: 1000px;
-            background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
-            background-position: center center;
-        }
+    .paper.heart {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      padding: 0;
+      border-radius: 50%;
+    }
 
-        .paper {
-            background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
-            background-size: 500px;
-            background-position: center center;
-            padding: 20px 100px;
-            /*  min-width: 800px; */
+    .paper.heart::after {
+      content: "";
+      background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: 150px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      opacity: 0.6;
+    }
 
-            transform: rotateZ(-5deg);
-            box-shadow: 1px 15px 20px 0px rgba(0, 0, 0, 0.5);
+    .paper.image {
+      padding: 10px;
+    }
 
-            position: absolute;
-        }
+    .paper.image p {
+      font-size: 30px;
+    }
 
-        .paper.heart {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            padding: 0;
-            border-radius: 50%;
-        }
+    p {
+      font-family: 'Zeyada', cursive;
+      font-size: 50px;
+      color: rgb(0, 0, 100);
+      opacity: 0.75;
+      user-select: none;
+      margin: 10px 0;
+    }
 
-        .paper.image {
-            padding: 10px;
-        }
+    img,
+    video {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      display: block;
+      margin: 10px auto;
+      user-select: none;
+    }
 
-        .paper.image p {
-            font-size: 30px;
-        }
+    #resetBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-family: sans-serif;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+    }
 
-        img {
-            max-height: 200px;
-            width: 100%;
-            user-select: none;
-        }
+    @media (max-width: 768px) {
+      .paper {
+        padding: 15px;
+        max-width: 90vw;
+      }
 
-        .paper.heart::after {
-            content: "";
-            background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-size: 150px;
-            background-position: center center;
-            background-repeat: no-repeat;
-            opacity: 0.6;
-        }
+      .paper.image p {
+        font-size: 20px;
+      }
 
-        p {
-            font-family: 'Zeyada';
-            font-size: 50px;
-            color: rgb(0, 0, 100);
-            opacity: 0.75;
-            user-select: none;
-        }
+      .paper.heart {
+        width: 120px;
+        height: 120px;
+      }
 
-        .paper,
-        p {
-            user-select: none;
-        }
+      .paper.heart::after {
+        background-size: 90px;
+      }
 
-        #resetBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 10px 20px;
-            font-size: 18px;
-            font-family: sans-serif;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 9999;
-        }
+      p {
+        font-size: 24px;
+      }
 
-
-  @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
-
-
-
-
-body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-size: 1000px;
-  background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
-  background-position: center center;
-}
-
-.paper {
-  background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
-  background-size: 500px;
-  background-position: center center;
-  padding: 20px 100px;
-/*  min-width: 800px; */
-  
-  transform: rotateZ(-5deg);
-  box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
-  
-  position: absolute;
-}
-
-.paper.heart {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  padding: 0;
-  border-radius: 50%;
-}
-
-.paper.image {
-  padding: 10px;
-}
-.paper.image p {
-  font-size: 30px;
-}
-
-img {
-  max-height: 200px;
-  width: 100%;
-  user-select: none;
-}
-
-.paper.heart::after {
-  content: "";
-  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-size: 150px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0.6;
-}
-
-p {
-  font-family: 'Zeyada';
-  font-size: 50px;
-  color: rgb(0,0,100);
-  opacity: 0.75;
-  user-select: none;
-  
-  // filter: drop-shadow(2px 1.5px 1px rgba(0,0,105,0.9));
-}
-.paper, p {
-  user-select: none;
-}
-
-#resetBtn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-family: sans-serif;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 9999;
-}
-
-@media (max-width: 768px) {
-  .paper {
-    padding: 10px 20px;
-    background-size: 300px;
-    max-width: 90vw;
-    box-sizing: border-box;
-  }
-
-  .paper.image p {
-    font-size: 18px;
-  }
-
-  p {
-    font-size: 24px;
-  }
-
-  img {
-    max-height: 120px;
-  }
-
-  .paper.heart {
-    width: 120px;
-    height: 120px;
-  }
-
-  .paper.heart::after {
-    background-size: 90px;
-  }
-
-  #resetBtn {
-    padding: 8px 16px;
-    font-size: 16px;
-    bottom: 20px;
-    right: 20px;
-  }
-}
-
-body {
-  overflow: hidden;
-  touch-action: none; /* prevent scrolling while dragging */
-}
-
-    </style>
+      #resetBtn {
+        padding: 8px 16px;
+        font-size: 16px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- A pen by College_Wishlist  -->
-    <div class="paper heart">
-        <p> Happy birthday </p>
-    </div>
+  <div class="paper heart">
+    <p>Happy birthday</p>
+  </div>
 
+  <div class="paper image">
+    <video controls>
+      <source src="african_bdy_wish.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
+  <div class="paper image">
+    <p>Choose your dare, choose your gift 😉</p>
+  </div>
 
-    <div class="paper image">
-        <video width="240" height="320" controls>
-            <source src="african_bdy_wish.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <!--    <img src="https://iili.io/HSzXpzg.jpg" /> -->
-    </div>
+  <div class="paper image">
+    <p>4. Buy me ice cream sandwich from Maharani.</p>
+    <p>🎁 : A super cool office outfit</p>
+  </div>
 
-    <div class="paper image">
-        <p> 5. dance dandanakka</p>
-        <p> gift: chocii </p>
-        <!--    <img src="https://iili.io/HSzXpzg.jpg" /> -->
-    </div>
+  <div class="paper image">
+    <p>3. Sing “Good Bad Ugly” song.</p>
+    <p>🎁 : Black eye mask</p>
+  </div>
 
-    <div class="paper image">
-        <p> 4. sing good bad ugly song</p>
-        <p> dress: formal </p>
-        <!--    <img src="https://iili.io/HSzXpzg.jpg" /> -->
-    </div>
-    <div class="paper image">
-        <p> 3. slap your sister</p>
-        <p> gift: eye mask 😍 </p>
-        <img src="https://iili.io/HSzXpzg.jpg" />
-    </div>
+  <div class="paper image">
+    <p>2. Slap your sister 😡</p>
+    <p>Gift 2: A beautiful frock — you’ll be slayin</p>
+    <img src="sis.png" alt="gift image" />
+  </div>
 
+  <div class="paper red">
+    <p class="p1">Add “@sudharsan.dev_ is my inspiration” to your Instagram bio for at least 5 minutes.</p>
+    <p class="p2">Get skincare products as your first gift 😍</p>
+  </div>
 
-    <div class="paper image">
-        <p></p>
-        <!--   <img src="https://iili.io/HSzXbmF.jpg" /> -->
-    </div>
+  <div class="paper">
+    <p class="p1">Wait!!! You know Sudharshan's gifting style already, don't you?</p>
+    <p class="p1">You only get each gift after completing a dare. 😡 Ready?</p>
+  </div>
 
-    <div class="paper image">
-        <p> 2. Buy me icecream sandwidch at maharani. (you also should eat it) </p>
-        <p> gift: dress (froack) </p>
+  <div class="paper">
+    <p class="p1">Haloo Dommarr!😡</p>
+    <p class="p1">Oh! It's your birthday! I've bought some gifts for you 👀<span style="color: red;">❤️</span></p>
+    <img src="saranya.png" alt="Birthday Image" />
+  </div>
 
+  <div class="paper">
+    <p class="p1">Drag the papers to move!</p>
+  </div>
 
-    </div>
+  <button id="resetBtn">Reset Notes</button>
 
+  <script>
+    let highestZ = 1;
 
+    class Paper {
+      holdingPaper = false;
+      rotating = false;
+      mouseTouchX = 0;
+      mouseTouchY = 0;
+      prevMouseX = 0;
+      prevMouseY = 0;
+      mouseX = 0;
+      mouseY = 0;
+      velX = 0;
+      velY = 0;
+      rotation = Math.random() * 30 - 15;
+      currentPaperX = 0;
+      currentPaperY = 0;
 
+      constructor(paper) {
+        this.paper = paper;
+        this.init();
+      }
 
-    <div class="paper red">
-        <p class="p1"> 1. Post I'm your best friend on Insta</p>
-        <p class="p2">Get your suncreen 😍</p>
-    </div>
+      getEventPosition(e) {
+        return e.touches ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : { x: e.clientX, y: e.clientY };
+      }
 
-    <div class="paper">
-        <p class="p1">I have got 5gifts for you</p>
-        <p class="p1">We'll follow my legacy gifting style you'll only receive the gift only if you comple the dare i
-            say in the next 5 steps. each dare has each gift <span style="color: red !important;">❤️</span></p>
-    </div>
+      init() {
+        const paper = this.paper;
 
-    <div class="paper">
-        <p class="p1">Haloo Dommarr!😡 </p>
-        <p class="p1">I've got some surprise for you<span style="color: red !important;">❤️</span></p>
-    </div>
+        const onMove = (e) => {
+          const { x, y } = this.getEventPosition(e);
+          this.mouseX = x;
+          this.mouseY = y;
 
+          if (!this.rotating) {
+            this.velX = this.mouseX - this.prevMouseX;
+            this.velY = this.mouseY - this.prevMouseY;
+          }
 
-    <div class="paper">
-        <p class="p1">Drag the papers to move!</p>
-    </div>
+          const dirX = this.mouseX - this.mouseTouchX;
+          const dirY = this.mouseY - this.mouseTouchY;
+          const dirLength = Math.sqrt(dirX ** 2 + dirY ** 2);
+          const dirNormalizedX = dirX / dirLength;
+          const dirNormalizedY = dirY / dirLength;
+          const angle = Math.atan2(dirNormalizedY, dirNormalizedX);
+          let degrees = (180 * angle) / Math.PI;
+          degrees = (360 + Math.round(degrees)) % 360;
 
-    <button id="resetBtn">Reset Notes</button>
+          if (this.rotating) {
+            this.rotation = degrees;
+          }
 
-    <script>
-        let highestZ = 1;
-
-        class Paper {
-            holdingPaper = false;
-            rotating = false;
-            mouseTouchX = 0;
-            mouseTouchY = 0;
-            prevMouseX = 0;
-            prevMouseY = 0;
-            mouseX = 0;
-            mouseY = 0;
-            velX = 0;
-            velY = 0;
-            rotation = Math.random() * 30 - 15;
-            currentPaperX = 0;
-            currentPaperY = 0;
-
-            constructor(paper) {
-                this.paper = paper;
-                this.originalTransform = paper.style.transform;
-                this.init();
+          if (this.holdingPaper) {
+            if (!this.rotating) {
+              this.currentPaperX += this.velX;
+              this.currentPaperY += this.velY;
             }
+            this.prevMouseX = this.mouseX;
+            this.prevMouseY = this.mouseY;
 
-            getEventPosition(e) {
-                if (e.touches) {
-                    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
-                } else {
-                    return { x: e.clientX, y: e.clientY };
-                }
-            }
+            paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
+          }
+        };
 
-            init() {
-                const paper = this.paper;
+        const onStart = (e) => {
+          e.preventDefault();
+          if (this.holdingPaper) return;
+          const { x, y } = this.getEventPosition(e);
 
-                const onMove = (e) => {
-                    const { x, y } = this.getEventPosition(e);
-                    this.mouseX = x;
-                    this.mouseY = y;
+          this.holdingPaper = true;
+          this.paper.style.zIndex = highestZ++;
+          this.mouseTouchX = x;
+          this.mouseTouchY = y;
+          this.prevMouseX = x;
+          this.prevMouseY = y;
 
-                    if (!this.rotating) {
-                        this.velX = this.mouseX - this.prevMouseX;
-                        this.velY = this.mouseY - this.prevMouseY;
-                    }
+          if (e.type === "touchstart" && e.touches.length === 2) {
+            this.rotating = true;
+          } else if (e.button === 2) {
+            this.rotating = true;
+          }
+        };
 
-                    const dirX = this.mouseX - this.mouseTouchX;
-                    const dirY = this.mouseY - this.mouseTouchY;
-                    const dirLength = Math.sqrt(dirX ** 2 + dirY ** 2);
-                    const dirNormalizedX = dirX / dirLength;
-                    const dirNormalizedY = dirY / dirLength;
-                    const angle = Math.atan2(dirNormalizedY, dirNormalizedX);
-                    let degrees = (180 * angle) / Math.PI;
-                    degrees = (360 + Math.round(degrees)) % 360;
+        const onEnd = () => {
+          this.holdingPaper = false;
+          this.rotating = false;
+        };
 
-                    if (this.rotating) {
-                        this.rotation = degrees;
-                    }
+        document.addEventListener("mousemove", onMove);
+        document.addEventListener("touchmove", onMove, { passive: false });
 
-                    if (this.holdingPaper) {
-                        if (!this.rotating) {
-                            this.currentPaperX += this.velX;
-                            this.currentPaperY += this.velY;
-                        }
-                        this.prevMouseX = this.mouseX;
-                        this.prevMouseY = this.mouseY;
+        paper.addEventListener("mousedown", onStart);
+        paper.addEventListener("touchstart", onStart, { passive: false });
 
-                        paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
-                    }
-                };
+        window.addEventListener("mouseup", onEnd);
+        window.addEventListener("touchend", onEnd);
+      }
 
-                const onStart = (e) => {
-                    e.preventDefault();
-                    if (this.holdingPaper) return;
-                    const { x, y } = this.getEventPosition(e);
+      reset() {
+        this.currentPaperX = 0;
+        this.currentPaperY = 0;
+        this.rotation = Math.random() * 30 - 15;
+        this.paper.style.transform = `translateX(0px) translateY(0px) rotateZ(${this.rotation}deg)`;
+      }
+    }
 
-                    this.holdingPaper = true;
-                    this.paper.style.zIndex = highestZ++;
-                    this.mouseTouchX = x;
-                    this.mouseTouchY = y;
-                    this.prevMouseX = x;
-                    this.prevMouseY = y;
-
-                    if (e.type === "touchstart" && e.touches.length === 2) {
-                        this.rotating = true;
-                    } else if (e.button === 2) {
-                        this.rotating = true;
-                    }
-                };
-
-                const onEnd = () => {
-                    this.holdingPaper = false;
-                    this.rotating = false;
-                };
-
-                document.addEventListener("mousemove", onMove);
-                document.addEventListener("touchmove", onMove, { passive: false });
-
-                paper.addEventListener("mousedown", onStart);
-                paper.addEventListener("touchstart", onStart, { passive: false });
-
-                window.addEventListener("mouseup", onEnd);
-                window.addEventListener("touchend", onEnd);
-            }
-
-            reset() {
-                this.currentPaperX = 0;
-                this.currentPaperY = 0;
-                this.rotation = Math.random() * 30 - 15;
-                this.paper.style.transform = `translateX(0px) translateY(0px) rotateZ(${this.rotation}deg)`;
-            }
-        }
-
-        const paperObjects = Array.from(document.querySelectorAll(".paper")).map((el) => new Paper(el));
-
-        // Reset button logic
-        document.getElementById("resetBtn").addEventListener("click", () => {
-            paperObjects.forEach((p) => p.reset());
-        });
-
-    </script>
-
+    const paperObjects = Array.from(document.querySelectorAll(".paper")).map((el) => new Paper(el));
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      paperObjects.forEach((p) => p.reset());
+    });
+  </script>
 </body>
-
 </html>
